@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from app.model import top_roles
 
 class InputData(BaseModel):
-    res : list[str]
+    skills : list[str]
 
 
 app = FastAPI()
@@ -15,8 +15,8 @@ def first():
 
 @app.post("/model/")
 def process_data(input: InputData):
-    print(input.res)
-    ans = top_roles(input.res)
+    print(input.skills)
+    ans = top_roles(input.skills)
 
     ans_dict = {'top_roles': ans}
     return ans_dict
